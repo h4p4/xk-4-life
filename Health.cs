@@ -134,7 +134,6 @@
             const float additionDurationSeconds = 1f;
             var current = 0f;
             const float step = additionDurationSeconds / 20;
-            var waitForSeconds = new WaitForSeconds(step);
             var wasHealthZero = Mathf.Abs(HealthCount) < PRECISION;
             while (current < additionDurationSeconds)
             {
@@ -175,7 +174,6 @@
                     cur += Time.deltaTime;
                     yield return null;
                 }
-                //yield return waitForSeconds;
             }
             container.Callback?.Invoke();
         }
@@ -184,7 +182,6 @@
         {
             _addingMaxHealthCoroutines = new List<Coroutine>();
             HealthCount = MaxHealth;
-            //_maxHealthCount = HealthCount;
             IsOutOfHealth = false;
             if (HealthCount == 0)
                 RaiseOutOfHealth();
